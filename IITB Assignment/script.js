@@ -93,9 +93,6 @@ class AnimalCard {
         `;
     }
     
-    
-
-    // Sort data by column
     sortData(column) {
         this.sortOrder[column] = this.sortOrder[column] === 'asc' ? 'desc' : 'asc';
 
@@ -116,7 +113,6 @@ class AnimalCard {
     }
 }
 
-// Initialize cards with JSON URLs
 const cards = {
     bigCats: new AnimalCard('bigCatsCardContainer', './bigCats.json', {
         key: 'bigCats',
@@ -129,7 +125,6 @@ const cards = {
     }),
 };
 
-// Utility functions for add, edit, delete
 window.openAddModal = (key) => {
     const modalTitle = document.getElementById('animalFormModalLabel');
     modalTitle.textContent = 'Add Animal';
@@ -185,7 +180,6 @@ window.handleAddFormSubmit = (event, key) => {
     }
 };
 
-// Open modal for editing an animal
 window.openEditModal = (key, name) => {
     const table = cards[key];
     const row = table.data.find((row) => row.name === name);
@@ -198,7 +192,6 @@ window.openEditModal = (key, name) => {
     document.getElementById('animalLocation').value = row.location;
     document.getElementById('animalSize').value = row.size;
 
-    // Image preview
     const imagePreviewContainer = document.getElementById('imagePreview');
     const img = document.createElement('img');
     img.src = row.image;
@@ -268,14 +261,12 @@ window.handleEditFormSubmit = (event, key, oldName) => {
     }
 };
 
-// Delete an animal
 window.deleteRow = (key, name) => {
     const table = cards[key];
     table.data = table.data.filter((row) => row.name !== name);
     table.render();
 };
 
-// Sorting functionality (unchanged)
 window.sortBigCats = (column) => {
     const table = cards['bigCats'];
     table.sortData(column);

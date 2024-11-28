@@ -25,28 +25,27 @@ h1, h2 {
   border-radius: 10px;
   transition: transform 0.3s ease-in-out;
   text-align: center;
-  overflow: visible; /* Prevent content overflow */
-  z-index: 0; /* Default stacking order */
-  background-color: #fff; /* Ensure cards have a background */
+  overflow: visible;
+  z-index: 0;
+  background-color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .animal-card:hover {
-  transform: scale(1.05); /* Slight zoom effect on the card */
-  z-index: 10; /* Bring hovered card to the foreground */
+  transform: scale(1.05);
+  z-index: 10;
 }
 
 .animal-image {
   width: 100%;
-  height: 200px;
-  /* object-fit: cover; */
+  height: 180px;
   transition: transform 0.3s ease-in-out, border-color 0.3s;
   border: 1px solid transparent;
   border-radius: 10px 10px 0 0;
 }
 
 .animal-card:hover .animal-image {
-  transform: scale(1.2); /* Enlarge the image on hover */
+  transform: scale(1.2);
   border-color: #ffc107;
 }
 
@@ -82,7 +81,7 @@ h1, h2 {
   border: none;
   padding: 8px 12px;
   font-size: 0.9rem;
-  font-weight: bold;
+  font-weight: bolder;
   border-radius: 5px;
   transition: background-color 0.2s, transform 0.2s;
 }
@@ -107,15 +106,13 @@ h1, h2 {
   transform: translateY(-2px);
 }
 
-
-/* Responsive Layout */
 @media (max-width: 768px) {
   .animal-card {
-    margin-bottom: 20px; /* Add spacing between cards */
+    margin-bottom: 20px;
   }
 
   .animal-image {
-    height: 150px; /* Adjust image height for smaller screens */
+    height: 150px;
   }
 
   .card-title {
@@ -132,12 +129,11 @@ h1, h2 {
   }
 }
 
-/* Additional Fixes for Overlap */
 .animal-card-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px; /* Add spacing between cards */
-  justify-content: center; /* Center-align cards for better layout */
+  gap: 20px;
+  justify-content: center;
 }
 
 .animal-card:hover {
