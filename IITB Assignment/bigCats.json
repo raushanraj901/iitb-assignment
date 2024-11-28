@@ -1,0 +1,8 @@
+[
+    { "name": "Tiger", "image": "./images/bigCats/image1.jpg", "location": "Asia", "size": "10" },
+    { "name": "Lion", "image": "./images/bigCats/image2.jpg", "location": "Africa", "size": "8" },
+    { "name": "Leopard", "image": "./images/bigCats/image3.jpg", "location": "Africa and Asia", "size": "5" },
+    { "name": "Cheeta", "image": "./images/bigCats/image4.jpg", "location": "Africa", "size": "5" },
+    { "name": "Caracal", "image": "./images/bigCats/image5.jpg", "location": "Africa", "size": "3" },
+    { "name": "Jaguar", "image": "./images/bigCats/image6.jpg", "location": "Amazon", "size": "5" }
+]

@@ -1,0 +1,6 @@
+[
+    { "name": "Humpback Whale", "image": "./images/bigFish/image1.jpg", "location": "Atlantic Ocean", "size": "15" },
+    { "name": "Killer Whale", "image": "./images/bigFish/image2.jpg", "location": "Atlantic Ocean", "size": "12" },
+    { "name": "Tiger Shark", "image": "./images/bigFish/image3.jpg", "location": "Ocean", "size": "8" },
+    { "name": "Hammerhead Shark", "image": "./images/bigFish/image4.jpg", "location": "Ocean", "size": "8" }
+]

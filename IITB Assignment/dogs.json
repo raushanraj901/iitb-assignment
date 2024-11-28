@@ -1,0 +1,6 @@
+[
+    { "name": "Rottweiler", "image": "./images/dogs/image1.jpg", "location": "Germany", "size": "2" },
+    { "name": "German Shepherd", "image": "./images/dogs/image2.jpg", "location": "Germany", "size": "2" },
+    { "name": "Labrodar", "image": "./images/dogs/image3.jpg", "location": "UK", "size": "2" },
+    { "name": "Alabai", "image": "./images/dogs/image4.jpg", "location": "Turkey", "size": "4" }
+]
