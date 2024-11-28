@@ -54,20 +54,31 @@ class AnimalCard {
             this.container.innerHTML = '<p>No data available.</p>';
             return;
         }
-
+    
+        const defaultImage = './images/default.jpg';
+    
         this.container.innerHTML = `
-            <button class="btn btn-primary mb-3" onclick="openAddModal('${this.options.key}')">Add Animal</button>
+            <button class="btn btn-primary mb-3 d-flex" onclick="openAddModal('${this.options.key}')">Add Animal</button>
             <div class="row">
                 ${this.data
                     .map(
                         (row) => `
                     <div class="col-md-3 d-flex mb-4">
                         <div class="animal-card">
-                            <img src="${row.image}" alt="${row.name}" class="animal-image">
+                            <img src="${row.image || defaultImage}" alt="${row.name}" class="animal-image">
                             <div class="card-body">
-                                <p class="card-text text-sm text-md text-lg text-xl text-xxl">Name: ${row.name}</p>
-                                <p class="card-text text-sm text-md text-lg text-xl text-xxl">Location: ${row.location}</p>
-                                <p class="card-text text-sm text-md text-lg text-xl text-xxl">Size: ${row.size} ft</p>
+                                <p class="card-text">
+                                    Name: <span style="${
+                                        this.options.key === 'dogs' 
+                                            ? 'font-weight: bold;' 
+                                            : this.options.key === 'bigFish' 
+                                            ? 'font-weight: bold; font-style: italic; color: blue;' 
+                                            : ''
+                                    }">${row.name}</span>
+                                </p>
+
+                                <p class="card-text">Location: ${row.location}</p>
+                                <p class="card-text">Size: ${row.size} ft</p>
                                 <div class="card-buttons">
                                     <button class="btn btn-warning" onclick="openEditModal('${this.options.key}', '${row.name}')">Edit</button>
                                     <button class="btn btn-danger" onclick="deleteRow('${this.options.key}', '${row.name}')">Delete</button>
@@ -77,10 +88,12 @@ class AnimalCard {
                     </div>`
                     )
                     .join('')}
-                    <div class="border mt-3 mb-5"></div>
+                <div class="border mt-3 mb-5"></div>
             </div>
         `;
     }
+    
+    
 
     // Sort data by column
     sortData(column) {
@@ -131,50 +144,45 @@ window.handleAddFormSubmit = (event, key) => {
     event.preventDefault();
     const table = cards[key];
     const name = document.getElementById('animalName').value;
-    const imageInput = document.getElementById('animalImage');
     const location = document.getElementById('animalLocation').value;
     const size = document.getElementById('animalSize').value;
 
-    // Get base64 image string
+    const imageInput = document.getElementById('animalImage');
     const imageFile = imageInput.files[0];
-    if (!imageFile) {
-        alert('Please upload an image.');
-        return;
-    }
+    const defaultImage = './images/default.jpg';
 
     const reader = new FileReader();
     reader.onload = function(event) {
-        const imageBase64 = event.target.result;
+        const imageBase64 = imageFile ? event.target.result : defaultImage;
 
-        // Validate if the image is of the correct type and size
-        if (!imageBase64.startsWith('data:image/')) {
+        if (!imageBase64.startsWith('data:image/') && imageFile) {
             alert('Please upload a valid image.');
             return;
         }
 
-        // Prevent duplicates (check for same name)
         if (table.data.some((row) => row.name.toLowerCase() === name.toLowerCase())) {
             alert('Duplicate name! An animal with this name already exists.');
             return;
         }
 
-        // Validate size (allow integer or float)
         let sizeNumber = parseFloat(size);
         if (isNaN(sizeNumber) || sizeNumber <= 0) {
-            alert('Size must be a positive number (either integer or float).');
+            alert('Size must be a positive number.');
             return;
         }
 
-        // Round size to nearest integer
         sizeNumber = Math.round(sizeNumber);
 
-        // Push the new animal data
         table.data.push({ name, image: imageBase64, location, size: sizeNumber });
         table.render();
         bootstrap.Modal.getInstance(document.getElementById('animalFormModal')).hide();
     };
 
-    reader.readAsDataURL(imageFile); // Convert file to base64 string
+    if (imageFile) {
+        reader.readAsDataURL(imageFile);
+    } else {
+        reader.onload({ target: { result: defaultImage } });
+    }
 };
 
 // Open modal for editing an animal
