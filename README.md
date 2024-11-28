@@ -5,7 +5,7 @@
 This project displays three tables of animals (Big Cats, Dogs, and Big Fish) using JSON data. The tables feature CRUD operations (Create, Read, Update, Delete), sorting capabilities, and dynamic styling for animal names. Users can add, edit, and delete animals in each table. Additionally, images are displayed with hover effects, and validation is provided for adding new animals.
 
 ## Features
-## Created JSON Files for each Tables
+### Created JSON Files for each Tables
 1. **CRUD Operations**:
     - **Add**: Add new animals to each table.
     - **Edit**: Modify the information of existing animals.
